@@ -22,7 +22,7 @@ RUN R -e "install.packages(c('leaflet', 'RColorBrewer', 'scales', 'lattice', 'dp
 
 # copy the app to the image
 RUN mkdir /root/syvisualization
-COPY SYVisualization /root/syvisualization
+COPY *.R *.js *.css /root/syvisualization
 
 COPY Rprofile.site /usr/lib/R/etc/
 
