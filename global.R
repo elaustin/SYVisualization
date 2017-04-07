@@ -5,16 +5,18 @@ library(RSQLite)
 #need data_wide and site_locations
 
 #site_locations
-site_locations<-fread("site_locations_nopred.csv")
+site_locations<-fread("http://staff.washington.edu/elaustin/site_locations_nopred.csv")
 
-datechar<-("2017-01-01")
+# datechar<-("2017-01-01")
+# 
+# db.SYdata = dbConnect(SQLite(), dbname="SYdata.sqlite")
+# 
+# sqlcmd <- paste0("SELECT * FROM wideData WHERE date_day >=", "\"", datechar, "\"")
+# 
+# data_wide<-data.table(dbGetQuery(db.SYdata, sqlcmd))
+# data_wide[,CO:=CO*1000]
 
-db.SYdata = dbConnect(SQLite(), dbname="SYdata.sqlite")
-
-sqlcmd <- paste0("SELECT * FROM wideData WHERE date_day >=", "\"", datechar, "\"")
-
-data_wide<-data.table(dbGetQuery(db.SYdata, sqlcmd))
-data_wide[,CO:=CO*1000]
+data_wide<-fread("http://staff.washington.edu/elaustin/data_03302017.csv")
 
 data_summary1<-data_wide[,
                         lapply(.SD, FUN = function (x)
