@@ -21,11 +21,11 @@ RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cloud.r-proje
 RUN R -e "install.packages(c('leaflet', 'RColorBrewer', 'scales', 'lattice', 'dplyr', 'DT', 'data.table','ggplot2','RSQLite'), repos='https://cloud.r-project.org/')"
 
 # copy the app to the image
-RUN mkdir /root/SYVisualization
-COPY syvisualization /root/SYVisualization
+RUN mkdir /root/
+COPY SYVisualization /root/
 
 COPY Rprofile.site /usr/lib/R/etc/
 
 EXPOSE 3838
 
-CMD ["R", "-e shiny::runApp('/root/syvisualization')"]
+CMD ["R", "-e shiny::runApp('/root/SYVisualization')"]
